@@ -130,8 +130,14 @@ body {
     white-space: nowrap;
     margin: 55px 0px;
     padding-bottom: 10px;
-
 }
+
+.carousel__icon {
+  position: absolute;
+  right: 30px;
+  width: 25px;
+}
+
 .carousel-item {
     width: 200px;
     height: 250px;

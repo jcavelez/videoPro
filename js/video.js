@@ -1,3 +1,4 @@
+
 let $videoRelatedContainer = document.getElementById('recommendations')
 let $recommendationsCarousel = createRecommendations($videoRelatedContainer)
 let $carousel
@@ -15,7 +16,7 @@ getRecommendationsSingleId(id).then((recommendedMovies) => {
 })
 
 $recommendationsCarousel.parentElement.classList.add('hiddenCarousel')
-$recommendationsCarousel.parentElement.style.display = "none"
+//$recommendationsCarousel.parentElement.style.display = "none"
 
 async function getRecommendationsSingleId(movieId) {
   const movies = await getData(`${RECOMMENDATIONS_URL}movie_id=${movieId}`)
@@ -44,7 +45,7 @@ function hideCarouselRecommendations(){
 		</g>
 	</svg>
 `
-setTimeout(() => $recommendationsCarousel.parentElement.style.display = "none" , 250)
+//setTimeout(() => $recommendationsCarousel.parentElement.style.display = "none" , 250)
 
 } else {
 		$recommendationsHeader.children[1].innerHTML = `
@@ -53,7 +54,7 @@ setTimeout(() => $recommendationsCarousel.parentElement.style.display = "none" ,
 		</svg>
 		`
 
-		$recommendationsCarousel.parentElement.style.display = ""
+		//$recommendationsCarousel.parentElement.style.display = ""
 	}
 
 }
