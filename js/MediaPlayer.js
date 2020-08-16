@@ -6,15 +6,6 @@ class MediaPlayer {
 		this._initPlugins()
 	}
 
-	_initAds() {
-		// wraping video element in a new div to ad banners inside
-		this.container = document.createElement('div')
-		this.container.style.position = 'relative'
-		const parentOfMedia = this.media.parentNode
-		parentOfMedia.insertBefore(this.container, this.media)
-		this.container.appendChild(this.media)	
-	}
-
 	_initPlugins() {
 		const player = {
 			play: () => this.play(),
@@ -33,6 +24,15 @@ class MediaPlayer {
 			//console.log('Plugins:', plugin)
 			plugin.run(player)
 		})
+	}
+
+	_initAds() {
+		// wraping video element in a new div to ad banners inside
+		this.container = document.createElement('div')
+		this.container.style.position = 'relative'
+		const parentOfMedia = this.media.parentNode
+		parentOfMedia.insertBefore(this.container, this.media)
+		this.container.appendChild(this.media)	
 	}
 
 	play() {

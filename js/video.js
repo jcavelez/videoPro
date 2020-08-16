@@ -1,3 +1,4 @@
+import MediaPlayer from './MediaPlayer.js';
 
 let $videoRelatedContainer = document.getElementById('recommendations')
 let $recommendationsCarousel = createRecommendations($videoRelatedContainer)
@@ -6,7 +7,7 @@ let $carousel
 //recibir 4 peliculas (API funciona asi)
 //enviarlas a render item
 
-id = 1255
+let id = 1255
 getRecommendationsSingleId(id).then((recommendedMovies) => {
 	emptyHTMLCollection($recommendationsCarousel)
 	recommendedMovies.forEach((movie) => {
