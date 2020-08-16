@@ -1,0 +1,19 @@
+{
+  "name": "youvideopro",
+  "version": "1.0.0",
+  "description": "Academic project in Javascript (vanilla)",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [
+    "javascript",
+    "promises",
+    "API"
+  ],
+  "author": "@JuanCaVelez77",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

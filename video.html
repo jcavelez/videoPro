@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli&display=swap">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./styles.css">
+	<link rel="stylesheet" href="./css/video.css">
+	<title>Video</title>
+</head>
+<body>
+	<header class="header">
+		<img class="header__img" src="./assets/img/Logo1.png" alt="Platzi Video">
+		<div class="header__menu">
+				<div class="header__menu--profile">
+				<img src="./assets/img/user-icon.png" alt="User">
+				<p>Perfil</p>
+				</div>
+				<ul>
+				<li><a href="/">Cuenta</a></li>
+				<li><a href="/">Cerrar Sesión</a></li>
+				</ul>
+		</div>
+	</header>
+
+	<main class="container">
+		<video class="movie">
+			<source src="/assets/BigBuckBunny.mp4" />
+		</video>
+	</main>
+
+	<section class="recommendations" id='recommendations'>
+		<!-- Aqui se renderiza un carousel pequeño -->
+	</section>
+
+	<section class="comments">
+		<div class="comments__title">Comentarios</div>
+		<div class="comment">
+			<img class="comment__photo" src="/assets/img/user_1.png"></img>
+			<div class="comment__name">Alexandra Smirnov</div>
+			<div class="comment__content">Great video. Siempre los veo. Saludos.</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<a href="/">Términos de uso</a>
+		<a href="/">Declaración de privacidad</a>
+		<a href="/">Centro de ayuda</a>
+</footer>
+
+<script src="js/movie-list.js" charset="utf-8"></script>
+<script src="/js/buscador.js"></script>
+<script src="/js/recomendaciones.js"></script>
+<script src="/js/video.js"></script>
+
+</body>
+</html>
