@@ -14,6 +14,12 @@ const player = new MediaPlayer({
 video.addEventListener('click', player.togglePlay.bind(player))
 // player.media.controls = true
 
+const $muteIcon = document.querySelector('.movie__icon')
+$muteIcon.addEventListener('click', () => { 
+	player.toggleMute.call(player)
+	$muteIcon.classList.toggle('mute')
+})
+
 let $videoRelatedContainer = document.getElementById('recommendations')
 let $recommendationsCarousel = createRecommendations($videoRelatedContainer)
 //enviar cada id en cache a getData

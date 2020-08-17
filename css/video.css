@@ -19,13 +19,15 @@ main {
   right: 5px;
   z-index: 422;
 
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
+
+  background-size: cover;
+  background-image: url('/assets/img/noun_increase_volume_419784.svg');
 }
 
-
-.movie__icon.unmute {
-  background-image: url('/assets/img/noun_increase_volume_419784.png');
+.movie__icon.mute {
+  background-image: url('/assets/img/noun_Mute_1130062.svg');
 }
 
 .ads {
