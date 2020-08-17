@@ -107,6 +107,9 @@ function insertHTML($selector, template)
   html.body.innerHTML = template
   const templateInHTML = html.body.children[0]
   $selector.append(templateInHTML)
+}
+
+function createEventsCarousel() {
   const $imageMovieElement = templateInHTML.querySelector('.carousel-item__img')
   $imageMovieElement.addEventListener('load', () => { $imageMovieElement.classList.add('fadeIn')} )
   templateInHTML.addEventListener('click', () => { showModal(parseInt(templateInHTML.dataset.id, 10)) })
