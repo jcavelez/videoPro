@@ -15,6 +15,10 @@ if(recommendationBuffer > 0)
       recommendedMovies.forEach( (movie) => {
         let movieTemplate = createCarouselItemTemplate(movie)
         insertHTML($recommendationsCarousel, movieTemplate)
+        
+        const movieElement = document.getElementById(`${movie.id}`).parentElement
+        movieElement.addEventListener('click', showModal.bind(this, parseInt(movieElement.dataset.id, 10)))
+        
       })
     })
   },
@@ -32,12 +36,20 @@ async function getRecommendationsFromCache()
   {
     const recommendedId = localStorage[`rec${1}`]
     const movies = await getData(`${RECOMMENDATIONS_URL}movie_id=${recommendedId}`)
+   
+
+    for(let i = 0; i < movies.length; i++) {
+      for(let j = 0; j < recommendedMovies.length; j++) {
+        if(movies[i].id == recommendedMovies[j].id) {
+          movies.splice(i, 1)
+        }
+      }
+    }
     recommendedMovies = recommendedMovies.concat(movies)
   }
-  //console.log(recommendedMovies);
+  console.log(recommendedMovies);
   return recommendedMovies
 }
-
 
 
 function createRecommendations($listsContainer)

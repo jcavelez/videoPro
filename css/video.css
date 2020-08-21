@@ -88,18 +88,6 @@ main {
   align-self: center;
 }
 
-
-.categories__header {
-  display: flex;
-  /* width: 95%; */
-  height: 22px;
-  margin: 0 auto;
-  background-color:rgba(255,255,255,0.2);
-  border-radius: 10px;
-  position: relative;
-}
-
-
 .categories__header:hover {
   cursor: pointer;
 }

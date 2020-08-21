@@ -106,7 +106,10 @@ for (let genre in GENRES)
       $carousel.append(movieElement)
       const $imageMovieElement = movieElement.querySelector('.carousel-item__img')
       $imageMovieElement.addEventListener('load', () => { $imageMovieElement.classList.add('fadeIn')} )
-      movieElement.addEventListener('click', () => { showModal(parseInt(movieElement.dataset.id, 10)) })
+      movieElement.addEventListener('click', () => { 
+        console.log('clic')
+        showModal(parseInt(movieElement.dataset.id, 10)) 
+      })
     })
   }
 
@@ -148,8 +151,19 @@ async function showModal(movieId)
 
   //guardamos en el localstorage el id de la peli para después crear
   //recomendaciones basados en estos ids
-  recommendationBuffer = recommendationBuffer < MAX_RECOMMENDATIONS ? recommendationBuffer+1 : 1
-  localStorage.setItem(`rec${recommendationBuffer}`, movieId)
+
+  let save = true
+
+  for(let i = 1 ; i <= MAX_RECOMMENDATIONS; i++) {
+    console.log(localStorage.getItem(`rec${i}`) , " ", movieId)
+    if(localStorage.getItem(`rec${i}`) == movieId) {
+      save = false
+    }
+  }
+  if(save) {
+    recommendationBuffer = recommendationBuffer < MAX_RECOMMENDATIONS ? recommendationBuffer+1 : 1
+    localStorage.setItem(`rec${recommendationBuffer}`, movieId)
+  }
 }
 
 function hideModal() {
