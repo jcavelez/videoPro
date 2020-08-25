@@ -15,23 +15,29 @@ const $listsContainer = document.getElementById('lists')
 const $overlay = document.getElementById('overlay')
 const $modal = document.getElementById('modal')
 
-const MAX_RECOMMENDATIONS = 2
+const MAX_RECOMMENDATIONS = 3
 let recommendationBuffer = localStorage.length
 
 //Render de carrouseles
 for (let genre in GENRES)
 {
-  let templateTitles = `
-    <h2 class="categories__title">Películas de ${GENRES[genre]}</h2>
+  let templateTitles = 
+  `<div class="categories__header">
+  <h2 class="categories__title">Películas de ${GENRES[genre]}</h2>
+    <span class="carousel__icon">
+      <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 16 20" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+        <path fill="#FFFFFF" d="M2.8,4.9c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l5.5,5.5c0.2,0.2,0.5,0.2,0.7,0c0,0,0,0,0,0l5.5-5.5c0.2-0.2,0.2-0.5,0-0.7  s-0.5-0.2-0.7,0L8,10L2.8,4.9z"/>
+      </svg>
+    </span>
+  </div>`
 
-    `
-    let templateCarousel = `
-    <section class="carousel">
-      <div class="carousel__container" id="${genre}-list">
-        <img src="assets/img/loader.gif" width="50" height="50" alt="">
-      </div>
-    </section>
-    `
+  let templateCarousel = `
+  <section class="carousel">
+    <div class="carousel__container" id="${genre}-list">
+      <img src="assets/img/loader.gif" width="50" height="50" alt="">
+    </div>
+  </section>
+  `
   //
   //crea una variable tipo documento html
   let html = document.implementation.createHTMLDocument()
@@ -39,8 +45,12 @@ for (let genre in GENRES)
   html.body.innerHTML = templateTitles
   //agregar el temprate al final del elemento con id 'list'
   $listsContainer.append(html.body.children[0])
+  let header = $listsContainer.lastChild
   html.body.innerHTML = templateCarousel
   $listsContainer.append(html.body.children[0])
+
+  header.addEventListener('click' , hideCarousel.bind(this, $listsContainer.lastChild))
+
 
 }
 
@@ -211,4 +221,33 @@ function createModalTemplate(movie)
     </div>
   </div>
   `
+}
+
+function hideCarousel($Carousel){
+  $Carousel.classList.toggle('hiddenCarousel')
+  
+  let $Header = $Carousel.previousSibling
+	if($Carousel.classList.contains('hiddenCarousel')) {
+    
+    $Header.children[1].innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -9 135 160" x="0px" y="0px">
+      <defs>
+        <style>.cls-1{fill:none;}</style>
+      </defs>
+      <g data-name="Layer 2">
+        <g data-name="Layer 1">
+          <path fill="#FFFFFF" d="M70.59,98a5.9,5.9,0,0,1-4.11-1.66L27,58.27a11.47,11.47,0,0,1,0-16.54L66.48,3.66a5.92,5.92,0,1,1,8.22,8.51L35.48,50,74.7,87.83A5.91,5.91,0,0,1,70.59,98Z"/>
+          <rect class="cls-1" width="90" height="90"/>
+        </g>
+      </g>
+    </svg>
+  `
+  } else {
+      $Header.children[1].innerHTML = `
+      <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 16 20" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+        <path fill="#FFFFFF" d="M2.8,4.9c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l5.5,5.5c0.2,0.2,0.5,0.2,0.7,0c0,0,0,0,0,0l5.5-5.5c0.2-0.2,0.2-0.5,0-0.7  s-0.5-0.2-0.7,0L8,10L2.8,4.9z"/>
+      </svg>
+      `
+    }
+
 }
