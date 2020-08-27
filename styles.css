@@ -113,7 +113,7 @@ body {
 
 .categories__header {
   display: flex;
-  width: 95%;
+  width: 99%;
   height: 22px;
   margin: 0 auto;
   background-color:rgba(255,255,255,0.2);
@@ -140,6 +140,7 @@ body {
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-fill-mode: forwards;
+  overflow: hidden;
 }
 
 @keyframes hideCarousel {
@@ -171,20 +172,57 @@ body {
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-fill-mode: forwards;
-
-  
 }
 
 .carousel__container {
-    white-space: nowrap;
-    margin: 55px 0px;
-    padding-bottom: 10px;
+  white-space: nowrap;
+  margin: 55px 0px;
+  padding-bottom: 10px;
 }
 
 .carousel__icon {
+  animation-name: rotateIconBack;
+  animation-duration: 0.6s; 
+  animation-fill-mode: forwards;
+  
   position: absolute;
-  left: 96%;
+  
   width: 25px;
+
+}
+
+.carousel__icon.hiddenCarousel {
+  animation-name: rotateIcon;
+  animation-duration: 0.6s; 
+  animation-fill-mode: forwards;
+  
+  
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0deg);
+    top: 0px;
+    left: 96%;
+  }
+  to {
+    transform: rotate(90deg);
+    top: -6px;
+    left: 95%;
+  }
+}
+
+@keyframes rotateIconBack {
+  from {
+    transform: rotate(90deg);
+    top: -6px;
+    left: 95%;
+  }
+  to {
+    transform: rotate(0deg);
+    top: 0px;
+    left: 96%;
+  }
 }
 
 .carousel-item {
@@ -257,7 +295,6 @@ body {
 }
 
 
-
 .login {
       background: linear-gradient(#21C08B, #AB88FF);
       display: flex;
@@ -287,7 +324,6 @@ body {
 
 .login__container--form label {
       font-size: 14px;
-
   }
 
 .login__container--remember-me {
@@ -319,12 +355,10 @@ body {
 .login__container--social-media > div > img {
     width: 30px;
     margin-right: 10px;
-
 }
 
 .login__container--register {
     font-size: 14px;
-
 }
 
 .login__container--register a {
