@@ -101,7 +101,7 @@ for (let genre in GENRES)
         <img class="carousel-item__img" src="${movie.medium_cover_image}" alt="${movie.title}">
         <div class="carousel-item__details">
           <div>
-            <img class="carousel-item__details--img" src="./assets/img/play-icon.png" alt="Reproducir">
+            <img class="carousel-item__details--img play-button" src="./assets/img/play-icon.png" alt="Reproducir">
             <img class="carousel-item__details--img" src="./assets/img/plus-icon.png" alt="Agregar">
           </div>
           <p class="carousel-item__details--title">${movie.title}</p>
@@ -116,10 +116,13 @@ for (let genre in GENRES)
       $carousel.append(movieElement)
       const $imageMovieElement = movieElement.querySelector('.carousel-item__img')
       $imageMovieElement.addEventListener('load', () => { $imageMovieElement.classList.add('fadeIn')} )
-      movieElement.addEventListener('click', () => { 
-        console.log('clic')
-        showModal(parseInt(movieElement.dataset.id, 10)) 
-      })
+      movieElement.addEventListener('click', showModal.bind(this, movieElement.dataset.id))
+      
+      let play = movieElement.querySelector('.play-button')
+      play.removeEventListener('click', showModal.bind(this, movieElement.dataset.id))
+     // play.addEventListener('click', playMovie.bind(this, movieId))
+      
+      //addEventListener('click', playMovie.bind(this, movie.id))
     })
   }
 
@@ -251,5 +254,8 @@ function hideCarousel($Carousel){
   //     </svg>
   //     `
   //   }
+}
+
+function playMovie() {
 
 }
